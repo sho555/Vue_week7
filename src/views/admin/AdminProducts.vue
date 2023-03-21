@@ -200,7 +200,7 @@
 </template>
 
 <script>
-import Pagination from '../PaginationView.vue'
+import Pagination from '../../components/PaginationView.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const productModal = {}
 const delProductModal = {}
