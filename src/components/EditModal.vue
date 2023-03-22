@@ -241,7 +241,7 @@ export default {
     updateProduct () {
       this.$emit('update-product', this.selectProduct)
     },
-    openModal (newProd, product) {
+    openModal () {
       this.modal.show()
     },
     hideModal () {

@@ -278,14 +278,14 @@ export default {
           imagesUrl: []
         }
         this.newProd = true
-        productModal.show()
+        this.$refs.editModal.openModal()
       } else if (newProd === 'edit') {
         this.tempProduct = { ...product }
-        this.newProd = false
-        this.$refs.editModal.show()
+        this.$refs.editModal.openModal()
+        productModal.show()
       } else if (newProd === 'delete') {
         this.tempProduct = { ...product }
-        this.$refs.delModal.show()
+        this.$refs.delModal.openModal()
       }
     },
     deleteProduct () {
