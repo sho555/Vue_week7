@@ -200,7 +200,7 @@
 </template>
 
 <script>
-import Pagination from '../../components/PaginationView.vue'
+import Pagination from '../components/PaginationView.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const productModal = {}
 const delProductModal = {}
@@ -289,7 +289,7 @@ export default {
 
   mounted () {
     this.getData()
-    // this.checkLogin()
+    this.checkLogin()
   }
 }
 </script>
