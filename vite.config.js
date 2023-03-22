@@ -5,7 +5,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/Vue_week6/',
+  base: '/Vue_week7/',
   plugins: [
     vue(),
     eslintPlugin({

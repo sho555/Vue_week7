@@ -24,6 +24,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:Wendy03/Wendy03.github.io.git main
 
 # if you are deploying to https://Wendy03.github.io/week6_vite
-git push -f https://github.com/Wendy03/week6_vite.git main:gh-pages
+git push -f https://github.com/sho555/Vue_week7.git main:gh-pages
 
 cd -
