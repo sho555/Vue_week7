@@ -59,7 +59,7 @@
           <pagination :pages="page"
           :get-data="getData"></pagination>
         </div>
-        <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
+        <!-- <div id="productModal" ref="productModal" class="modal fade" tabindex="-1" aria-labelledby="productModalLabel"
           aria-hidden="true">
           <div class="modal-dialog modal-xl">
             <div class="modal-content border-0">
@@ -195,7 +195,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <PaginationView :pages="page" @emit-page="getData"></PaginationView>
 
     <EditModal
@@ -250,7 +250,6 @@ export default {
         .then((res) => {
           this.products = res.data.products
           this.page = res.data.pagination
-          console.log(this.page)
         })
         .catch((err) => {
           console.log(err.response.data.message)
@@ -323,6 +322,8 @@ export default {
   },
 
   mounted () {
+    console.log(this.$refs)
+
     this.getData()
     this.checkLogin()
   }
