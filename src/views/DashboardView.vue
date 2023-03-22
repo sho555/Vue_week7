@@ -1,6 +1,6 @@
 <template>
     <router-link to="/admin/products">後臺產品列表</router-link>|
-    <router-link to="/admin/orders">後臺訂單列表</router-link>|
+    <router-link to="/admin/orders" >後臺訂單列表</router-link>|
     <router-link to="/home">回前台首頁</router-link>|
     <a href="#" @click.prevent="logout">登出</a>
 
@@ -23,6 +23,7 @@ export default {
         imagesUrl: []
       },
       page: {}
+      // isAuth: true
     }
   },
   components: {
@@ -47,10 +48,10 @@ export default {
           console.log(err.response.data.message)
           this.$router.push('/login')
         })
-    },
-    mounted () {
-      this.checkLogin()
     }
+  },
+  mounted () {
+    this.checkLogin()
   }
 }
 </script>

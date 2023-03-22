@@ -171,12 +171,12 @@
             </div>
           </div>
         </div>
-        <div id="delProductModal" ref="delProductModal" class="modal fade" tabindex="-1"
-          aria-labelledby="delProductModalLabel" aria-hidden="true">
+        <div id="deleteProductModal" ref="deleteProductModal" class="modal fade" tabindex="-1"
+          aria-labelledby="deleteProductModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content border-0">
               <div class="modal-header bg-danger text-white">
-                <h5 id="delProductModalLabel" class="modal-title">
+                <h5 id="deleteProductModalLabel" class="modal-title">
                   <span>刪除產品</span>
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -189,21 +189,37 @@
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
                   取消
                 </button>
-                <button type="button" class="btn btn-danger" @click="delProduct">
+                <button type="button" class="btn btn-danger" @click="deleteProduct">
                   確認刪除
                 </button>
               </div>
             </div>
           </div>
         </div>
+        <PaginationView :pages="page" @emit-page="getData"></PaginationView>
+
+    <EditModal
+    ref="EditModal"
+    :is-new="isNew"
+    :product="tempProduct"
+    @update-product="updateProduct">
+    </EditModal>
+    <DeleteModal
+    ref="delModal"
+    :item="tempProduct"
+    @delete="deleteProduct">
+    </DeleteModal>
 
 </template>
 
 <script>
-// import Pagination from '../components/PaginationView.vue'
+import PaginationView from '../components/PaginationView.vue'
+import DeleteModal from '../components/DeleteModal.vue'
+import EditModal from '../components/EditModal.vue'
+
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const productModal = {}
-const delProductModal = {}
+const deleteProductModal = {}
 
 export default {
   data () {
@@ -218,7 +234,10 @@ export default {
     }
   },
   components: {
-    // Pagination
+    PaginationView,
+    DeleteModal,
+    EditModal
+
   },
   methods: {
     logout () {
@@ -267,15 +286,15 @@ export default {
         productModal.show()
       } else if (newProd === 'delete') {
         this.tempProduct = { ...product }
-        delProductModal.show()
+        deleteProductModal.show()
       }
     },
-    delProduct () {
+    deleteProduct () {
       const url = `${VITE_APP_URL}/api/${VITE_APP_PATH}/admin/product/${this.tempProduct.id}`
 
       this.$http.delete(url).then((res) => {
         alert(res.data.message)
-        delProductModal.hide()
+        deleteProductModal.hide()
         this.getData()
       }).catch((err) => {
         console.log(err.response.data.message)
