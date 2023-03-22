@@ -68,7 +68,7 @@ export default {
   },
   mounted () {
     this.modal = new Modal(
-      document.querySelector('#delModal'),
+      this.$refs.modal,
       {
         backdrop: 'static',
         keyboard: false

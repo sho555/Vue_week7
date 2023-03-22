@@ -199,10 +199,10 @@
         <PaginationView :pages="page" @emit-page="getData"></PaginationView>
 
     <EditModal
-    ref="EditModal"
+    ref="editModal"
     :is-new="isNew"
     :product="tempProduct"
-    @update-product="updateProduct">
+    @update-product="updateProducts">
     </EditModal>
     <DeleteModal
     ref="delModal"
@@ -213,9 +213,9 @@
 </template>
 
 <script>
-import PaginationView from '@/components/PaginationView.vue'
-import DeleteModal from '@/components/DeleteModal.vue'
-import EditModal from '@/components/EditModal.vue'
+import PaginationView from '../../components/PaginationView.vue'
+import DeleteModal from '../../components/DeleteModal.vue'
+import EditModal from '../../components/EditModal.vue'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const productModal = {}
@@ -283,10 +283,10 @@ export default {
       } else if (newProd === 'edit') {
         this.tempProduct = { ...product }
         this.newProd = false
-        productModal.show()
+        this.$refs.editModal.show()
       } else if (newProd === 'delete') {
         this.tempProduct = { ...product }
-        deleteProductModal.show()
+        this.$refs.delModal.show()
       }
     },
     deleteProduct () {

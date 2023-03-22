@@ -6,7 +6,7 @@
       :class = "{disabled: !pages.has_pre}"
       >
         <a class="page-link" href="#"
-        @click.prevent="getData(pages.current_page - 1)"
+        @click.prevent="updatePage"
         aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
@@ -16,14 +16,14 @@
       v-for="page in pages.total_pages"
       :key="page + 'page'">
       <a class="page-link" href="#"
-      @click.prevent="getData(page)"
+      @click.prevent="updatePage"
       >{{ page }}</a></li>
 
       <li class="page-item"
       :class = "{disabled: !pages.has_next}"
       >
         <a class="page-link" href="#"
-        @click.prevent="getData(pages.current_page + 1)"
+        @click.prevent="updatePage"
 
         aria-label="Next">
           <span aria-hidden="true">&raquo;</span>
