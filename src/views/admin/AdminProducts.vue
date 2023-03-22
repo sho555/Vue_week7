@@ -213,9 +213,9 @@
 </template>
 
 <script>
-import PaginationView from '../components/PaginationView.vue'
-import DeleteModal from '../components/DeleteModal.vue'
-import EditModal from '../components/EditModal.vue'
+import PaginationView from '@/components/PaginationView.vue'
+import DeleteModal from '@/components/DeleteModal.vue'
+import EditModal from '@/components/EditModal.vue'
 
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const productModal = {}
