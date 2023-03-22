@@ -200,7 +200,7 @@
 </template>
 
 <script>
-import Pagination from '../components/PaginationView.vue'
+// import Pagination from '../components/PaginationView.vue'
 const { VITE_APP_URL, VITE_APP_PATH } = import.meta.env
 const productModal = {}
 const delProductModal = {}
@@ -218,7 +218,7 @@ export default {
     }
   },
   components: {
-    Pagination
+    // Pagination
   },
   methods: {
     logout () {
@@ -284,6 +284,22 @@ export default {
     createImages () {
       this.tempProduct.imagesUrl = []
       this.tempProduct.imagesUrl.push('')
+    },
+
+    checkLogin () {
+      const token = document.cookie.replace(/(?:(?:^|.*;\s*)token\s*=\s*([^;]*).*$)|^.*$/, '$1') // 取出token
+      this.$http.defaults.headers.common.Authorization = token // 將token驗證
+
+      this.$http.post(`${VITE_APP_URL}/api/user/check`)
+        .then(res => {
+          if (!res.data.success) {
+            this.$router.push('/login')
+          }
+        })
+        .catch((err) => {
+          console.log(err.response.data.message)
+          this.$router.push('/login')
+        })
     }
   },
 
